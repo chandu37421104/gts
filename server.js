@@ -3,6 +3,13 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+const corsOptions = {
+    origin: process.env.FRONTEND_URL || '*', // Allow your Vercel frontend
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+};
+app.use(cors(corsOptions));
+
 // Import route files
 import authRoutes from './routes/authRoutes.js';
 import pointsRoutes from './routes/pointsRoutes.js';
